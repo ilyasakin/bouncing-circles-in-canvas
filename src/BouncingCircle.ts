@@ -1,5 +1,6 @@
 import random from 'lodash.random';
 import sample from 'lodash.sample';
+import { Game } from './Game';
 
 export class BouncingCircle {
   private ctx: CanvasRenderingContext2D;
@@ -11,7 +12,10 @@ export class BouncingCircle {
   public directionY: number = sample([-1, 1]) as number;
   public radius: number = 10;
 
-  constructor(private readonly canvas: HTMLCanvasElement) {
+  constructor(
+    private readonly canvas: HTMLCanvasElement,
+    private readonly game: Game
+  ) {
     this.ctx = this.canvas.getContext('2d') as CanvasRenderingContext2D;
     this.x = random(0, this.canvas.width);
     this.y = random(0, this.canvas.height);
@@ -46,5 +50,25 @@ export class BouncingCircle {
     if (this.directionY === -1 && this.lastY < this.radius) {
       this.directionY = 1;
     }
+
+    this.checkCollision();
+  }
+
+  // Copilot wrote this lol
+  public checkCollision(): void {
+    this.game.circles.forEach((c) => {
+      if (c === this) {
+        return;
+      }
+
+      const distance: number = Math.sqrt(
+        Math.pow(this.lastX - c.lastX, 2) + Math.pow(this.lastY - c.lastY, 2)
+      );
+
+      if (distance < this.radius + c.radius) {
+        this.directionX = -this.directionX;
+        this.directionY = -this.directionY;
+      }
+    });
   }
 }

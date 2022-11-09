@@ -28,18 +28,18 @@ export class Game {
 
   public initCircles(): void {
     this.circles = [
-      new BouncingCircle(this.canvas),
-      new BouncingCircle(this.canvas),
-      new BouncingCircle(this.canvas),
-      new BouncingCircle(this.canvas),
-      new BouncingCircle(this.canvas),
-      new BouncingCircle(this.canvas),
-      new BouncingCircle(this.canvas),
-      new BouncingCircle(this.canvas),
-      new BouncingCircle(this.canvas),
-      new BouncingCircle(this.canvas),
-      new BouncingCircle(this.canvas),
-      new BouncingCircle(this.canvas),
+      new BouncingCircle(this.canvas, this),
+      new BouncingCircle(this.canvas, this),
+      new BouncingCircle(this.canvas, this),
+      new BouncingCircle(this.canvas, this),
+      new BouncingCircle(this.canvas, this),
+      new BouncingCircle(this.canvas, this),
+      new BouncingCircle(this.canvas, this),
+      new BouncingCircle(this.canvas, this),
+      new BouncingCircle(this.canvas, this),
+      new BouncingCircle(this.canvas, this),
+      new BouncingCircle(this.canvas, this),
+      new BouncingCircle(this.canvas, this),
     ];
   }
 }
