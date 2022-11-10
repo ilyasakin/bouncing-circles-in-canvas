@@ -1,7 +1,6 @@
 import { BouncingCircle } from './BouncingCircle';
 
 export class Game {
-  public fps: number = 60;
   private ctx: CanvasRenderingContext2D;
   public circles: BouncingCircle[] = [];
 
@@ -11,15 +10,13 @@ export class Game {
 
   public start(): void {
     this.initCircles();
-
-    setInterval(() => {
-      this.draw();
-    }, 1000 / this.fps);
+    this.draw();
   }
 
   public draw(): void {
     this.clearCanvas();
     this.circles.forEach((c) => c.draw());
+    window.requestAnimationFrame(() => this.draw());
   }
 
   public clearCanvas(): void {
