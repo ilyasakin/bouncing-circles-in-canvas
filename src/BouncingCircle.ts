@@ -28,6 +28,7 @@ export class BouncingCircle {
     this.ctx.strokeStyle = 'white';
     this.ctx.arc(this.lastX, this.lastY, this.radius, 0, 2 * Math.PI);
     this.ctx.stroke();
+    this.ctx.closePath();
 
     this.lastX = this.lastX + this.directionX;
     this.lastY = this.lastY + this.directionY;
@@ -83,6 +84,7 @@ export class BouncingCircle {
       this.ctx.moveTo(this.lastX, this.lastY);
       this.ctx.lineTo(c.lastX, c.lastY);
       this.ctx.stroke();
+      this.ctx.closePath();
     });
   }
 }
