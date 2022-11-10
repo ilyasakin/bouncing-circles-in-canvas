@@ -52,6 +52,7 @@ export class BouncingCircle {
     }
 
     this.checkCollision();
+    this.drawLineToEveryOtherCircle();
   }
 
   // Copilot wrote this lol
@@ -69,6 +70,19 @@ export class BouncingCircle {
         this.directionX = -this.directionX;
         this.directionY = -this.directionY;
       }
+    });
+  }
+
+  public drawLineToEveryOtherCircle(): void {
+    this.game.circles.forEach((c) => {
+      if (c === this) {
+        return;
+      }
+
+      this.ctx.beginPath();
+      this.ctx.moveTo(this.lastX, this.lastY);
+      this.ctx.lineTo(c.lastX, c.lastY);
+      this.ctx.stroke();
     });
   }
 }
