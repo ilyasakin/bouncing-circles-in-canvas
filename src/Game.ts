@@ -10,13 +10,13 @@ export class Game {
 
   public start(): void {
     this.initCircles();
-    this.draw();
+    this.loop();
   }
 
-  public draw(): void {
+  public loop(): void {
     this.clearCanvas();
     this.circles.forEach((c) => c.draw());
-    window.requestAnimationFrame(() => this.draw());
+    window.requestAnimationFrame(() => this.loop());
   }
 
   public clearCanvas(): void {
